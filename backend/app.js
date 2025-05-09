@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -15,7 +16,7 @@ app.use(cookieParser());
 
 app.use("/api", routes);
 
-app.get("*", (req, res) => {
+app.get("/{*splat}", (req, res) => {
     res.sendFile(path.resolve("..", "frontend", "build", "index.html"));
 });
 
